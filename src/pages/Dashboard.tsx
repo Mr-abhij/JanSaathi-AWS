@@ -161,7 +161,7 @@ const Dashboard = () => {
         <div className="flex items-center gap-2">
           <Button variant="outline" size="sm" className="text-black border-black bg-white hover:bg-black/10" onClick={() => navigate("/")}>Home</Button>
           <NotificationCenter />
-          <Button variant="outline" size="sm" className="text-black border-black bg-white hover:bg-black/10" onClick={() => navigate("/chat?lang=en")">
+          <Button variant="outline" size="sm" className="text-black border-black bg-white hover:bg-black/10" onClick={() => navigate("/chat?lang=en")}>
             <MessageCircle className="w-4 h-4 mr-1" /> Chat
           </Button>
           <Button variant="ghost" size="sm" onClick={handleLogout}>

@@ -23,6 +23,11 @@ const speechLangMap: Record<Language, string> = {
   en: "en-IN",
   hi: "hi-IN",
   kn: "kn-IN",
+  mr: "mr-IN",
+  ta: "ta-IN",
+  te: "te-IN",
+  gu: "gu-IN",
+  bn: "bn-IN",
 };
 
 const Chat = () => {
@@ -30,6 +35,10 @@ const Chat = () => {
   const navigate = useNavigate();
   const lang = (searchParams.get("lang") || "en") as Language;
   const t = translations[lang];
+
+  // if ?voice=1 is present we should start listening as soon as greeting finishes
+  const shouldAutoVoice = searchParams.get("voice") === "1";
+
 
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
@@ -40,9 +49,13 @@ const Chat = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const recognitionRef = useRef<any>(null);
 
-  // Auto-greet on mount
+  // Auto-greet on mount and optionally start voice input
   useEffect(() => {
-    sendMessage("", true);
+    sendMessage("", true).then(() => {
+      if (shouldAutoVoice) {
+        toggleVoiceInput();
+      }
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -164,13 +177,13 @@ const Chat = () => {
   return (
     <div className="h-screen flex flex-col bg-background">
       {/* Header */}
-      <header className="flex items-center gap-3 px-4 py-3 border-b border-border bg-card shrink-0">
+      <header className="flex items-center gap-3 px-4 py-3 border-b border-border bg-primary text-primary-foreground shrink-0">
         <button onClick={() => navigate("/")} className="text-muted-foreground hover:text-foreground">
           <ArrowLeft className="w-5 h-5" />
         </button>
         <div className="flex-1">
-          <h1 className="font-bold text-foreground text-sm">{t.appName}</h1>
-          <p className="text-xs text-muted-foreground">{t.tagline}</p>
+          <h1 className="font-bold text-primary-foreground text-sm">{t.appName}</h1>
+          <p className="text-xs text-primary-foreground">{t.tagline}</p>
         </div>
         <Button
           variant="outline"

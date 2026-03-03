@@ -1,73 +1,79 @@
-# Welcome to your Lovable project
+# JanSaathi - AI-Powered Project Assistant
 
-## Project info
+## Project Overview
+JanSaathi is an intelligent project management assistant that leverages AWS Generative AI services to automate content generation, summarization, and project documentation tasks.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Why AI is Required
+- **Time Savings**: Automates repetitive content creation and summarization tasks
+- **Consistency**: Ensures uniform tone and style in generated documents
+- **Efficiency**: Quickly distills large amounts of information into actionable insights
 
-## How can I edit this code?
+## AWS Architecture
+- **Frontend**: AWS Amplify (React)
+- **Backend**: AWS Lambda + Amazon API Gateway
+- **AI Services**: Amazon Bedrock for foundation models
+- **Database**: Amazon DynamoDB
+- **Storage**: Amazon S3
+- **Authentication**: Amazon Cognito
 
-There are several ways of editing your application.
+## Project Stages
 
-**Use Lovable**
+### Stage 1: Core Infrastructure ✅
+- [x] Project setup and repository structure
+- [x] AWS SAM template for serverless deployment
+- [x] Basic Lambda functions and API endpoints
+- [x] DynamoDB table setup
+- [x] CI/CD pipeline configuration
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### Stage 2: AI Integration
+- [ ] Amazon Bedrock integration
+- [ ] Text generation workflows
+- [ ] Document summarization features
+- [ ] RAG implementation
 
-Changes made via Lovable will be committed automatically to this repo.
+### Stage 3: Frontend Development
+- [ ] React application setup
+- [ ] User authentication
+- [ ] API integration
+- [ ] UI/UX implementation
 
-**Use your preferred IDE**
+### Stage 4: Production Ready
+- [ ] Testing and optimization
+- [ ] Documentation
+- [ ] Demo video
+- [ ] Final deployment
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
+- AWS CLI configured
+- AWS SAM CLI installed
+- Node.js 18+
+- AWS CDK (optional)
 
-Follow these steps:
+### Installation
+```bash
+# Clone the repository
+git clone <repository-url>
+cd JanSaathi
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Install dependencies
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# Deploy to AWS
+sam deploy --guided
 ```
 
-**Edit a file directly in GitHub**
+## Features
+- 🤖 AI-powered content generation
+- 📝 Document summarization
+- 📊 Project status reports
+- 🔐 Secure authentication
+- 📱 Responsive web interface
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Technologies Used
+- **Frontend**: React, Tailwind CSS, AWS Amplify
+- **Backend**: Node.js, AWS Lambda, API Gateway
+- **AI/ML**: Amazon Bedrock, Claude 3.5 Sonnet
+- **Database**: Amazon DynamoDB
+- **DevOps**: AWS SAM, GitHub Actions

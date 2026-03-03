@@ -32,7 +32,7 @@ const Auth = () => {
         // Update profile name after signup
         const { data: { user } } = await supabase.auth.getUser();
         if (user) {
-          await supabase.from("profiles").update({ full_name: fullName }).eq("id", user.id);
+          await supabase.from("profiles").upsert({ id: user.id, full_name: fullName }, { onConflict: "id" });
         }
         toast({
           title: "Account created!",

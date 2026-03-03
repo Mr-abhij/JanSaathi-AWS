@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 import { ArrowLeft, Upload, Loader2, AlertTriangle, CheckCircle2, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -17,7 +18,9 @@ interface DocResult {
   fields: Record<string, string>;
 }
 
-const DocumentChecker = ({ lang, onBack }: { lang: Language; onBack: () => void }) => {
+const DocumentChecker = ({ lang: propLang, onBack }: { lang?: Language; onBack: () => void }) => {
+  const [searchParams] = useSearchParams();
+  const lang = propLang ?? ((searchParams.get("lang") || "en") as Language);
   const t = translations[lang];
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<DocResult | null>(null);

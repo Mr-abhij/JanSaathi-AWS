@@ -1,24 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap');
-
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --foreground: 210 50% 10%;
+    /* simplified, gov‑like palette */
+    --background: 210 10% 96%;   /* very light grey */
+    --foreground: 210 15% 10%;   /* dark text */
 
     --card: 0 0% 100%;
-    --card-foreground: 210 50% 10%;
+    --card-foreground: 210 15% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 50% 10%;
+    --popover-foreground: 210 15% 10%;
 
-    --primary: 207 80% 20%;
+    --primary: 220 60% 40%;      /* blue for government feel */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 145 63% 32%;
+    --secondary: 0 0% 60%;       /* muted grey */
     --secondary-foreground: 0 0% 100%;
 
     --muted: 210 20% 94%;

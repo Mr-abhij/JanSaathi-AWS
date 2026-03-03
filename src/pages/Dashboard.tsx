@@ -79,7 +79,9 @@ const Dashboard = () => {
   const saveProfile = async () => {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return;
-    await supabase.from("profiles").update({
+    // use upsert so new users get a row and existing ones are updated
+    const profileData = {
+      id: user.id,
       full_name: editForm.full_name,
       age: editForm.age,
       state: editForm.state,
@@ -88,7 +90,8 @@ const Dashboard = () => {
       category: editForm.category,
       gender: editForm.gender,
       updated_at: new Date().toISOString(),
-    }).eq("id", user.id);
+    };
+    await supabase.from("profiles").upsert(profileData, { onConflict: "id" });
     setProfile(editForm);
     setEditing(false);
     toast({ title: "Profile updated!" });
@@ -100,6 +103,9 @@ const Dashboard = () => {
     } catch (err) {
       console.error("Scheme match trigger failed:", err);
     }
+
+    // redirect to home so user sees their name and schemes immediately
+    navigate("/");
   };
 
   const deleteScheme = async (id: string) => {
@@ -145,16 +151,17 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="w-full px-4 py-3 flex items-center justify-between border-b border-border bg-card">
+      <header className="w-full px-4 py-3 flex items-center justify-between border-b border-border bg-background text-black">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <Shield className="w-4 h-4 text-primary-foreground" />
+          <div className="w-8 h-8 rounded-lg bg-background flex items-center justify-center border border-black">
+            <Shield className="w-4 h-4 text-black" />
           </div>
-          <span className="font-bold text-foreground">Dashboard</span>
+          <span className="font-bold text-black">Dashboard</span>
         </div>
         <div className="flex items-center gap-2">
+          <Button variant="outline" size="sm" className="text-black border-black bg-white hover:bg-black/10" onClick={() => navigate("/")}>Home</Button>
           <NotificationCenter />
-          <Button variant="outline" size="sm" onClick={() => navigate("/chat?lang=en")}>
+          <Button variant="outline" size="sm" className="text-black border-black bg-white hover:bg-black/10" onClick={() => navigate("/chat?lang=en")">
             <MessageCircle className="w-4 h-4 mr-1" /> Chat
           </Button>
           <Button variant="ghost" size="sm" onClick={handleLogout}>

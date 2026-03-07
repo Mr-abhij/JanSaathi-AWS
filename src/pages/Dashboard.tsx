@@ -185,7 +185,7 @@ const Dashboard = () => {
           </CardHeader>
           <CardContent>
             {editing ? (
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
                   { key: "full_name", label: "Full Name", type: "text" },
                   { key: "age", label: "Age", type: "number" },
@@ -210,7 +210,7 @@ const Dashboard = () => {
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-2 gap-3 text-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
                 <div><p className="text-muted-foreground text-xs">Name</p><p className="font-medium text-foreground">{profile?.full_name || "—"}</p></div>
                 <div><p className="text-muted-foreground text-xs">Age</p><p className="font-medium text-foreground">{profile?.age || "—"}</p></div>
                 <div><p className="text-muted-foreground text-xs">State</p><p className="font-medium text-foreground">{profile?.state || "—"}</p></div>

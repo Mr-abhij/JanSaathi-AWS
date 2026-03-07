@@ -110,15 +110,15 @@ const NotificationCenter = () => {
       </Button>
 
       {open && (
-        <div className="absolute right-0 top-12 w-80 max-h-[70vh] bg-card border border-border rounded-xl shadow-lg z-50 flex flex-col overflow-hidden">
+        <div className="absolute top-12 right-0 inset-x-0 sm:inset-x-auto w-full sm:max-w-xs md:max-w-sm lg:max-w-md max-h-[70vh] bg-card border border-border rounded-xl shadow-lg z-50 flex flex-col overflow-hidden">
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b border-border">
+          <div className="flex flex-wrap items-center justify-between px-4 py-3 border-b border-border">
             <h3 className="font-semibold text-sm text-foreground">Notifications</h3>
-            <div className="flex items-center gap-1">
+            <div className="flex flex-wrap items-center gap-1 mt-2 sm:mt-0">
               <Button
                 variant="ghost"
                 size="sm"
-                className="text-xs h-7"
+                className="text-xs h-7 whitespace-nowrap"
                 onClick={triggerSchemeMatch}
                 disabled={loading}
               >
@@ -164,14 +164,14 @@ const NotificationCenter = () => {
                       onClick={() => !n.is_read && markAsRead(n.id)}
                     >
                       <div className="flex items-center gap-2">
-                        <p className="text-sm font-medium text-foreground leading-tight">
+                        <p className="text-sm font-medium text-foreground leading-tight break-words">
                           {n.title}
                         </p>
                         {!n.is_read && (
                           <span className="w-2 h-2 rounded-full bg-primary shrink-0" />
                         )}
                       </div>
-                      <p className="text-xs text-muted-foreground mt-1">{n.message}</p>
+                      <p className="text-xs text-muted-foreground mt-1 break-words">{n.message}</p>
                       {n.deadline && (
                         <Badge variant="secondary" className="mt-1.5 text-[10px]">
                           📅 {n.deadline}

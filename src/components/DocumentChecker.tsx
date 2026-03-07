@@ -117,7 +117,7 @@ const DocumentChecker = ({ lang: propLang, onBack }: { lang?: Language; onBack: 
               </div>
             </CardHeader>
             <CardContent className="space-y-3">
-              <div className="grid grid-cols-2 gap-3 text-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
                 <div>
                   <p className="text-muted-foreground text-xs">Name</p>
                   <p className="font-medium text-foreground">{result.name}</p>

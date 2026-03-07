@@ -1,8 +1,16 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  /* allow the react root to span the full viewport on small devices
+     and remove the extra padding that was causing horizontal scroll. */
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
   text-align: center;
+}
+
+/* prevent any accidental horizontal overflow from components */
+html,
+body {
+  overflow-x: hidden;
 }
 
 .logo {
